@@ -1,4 +1,7 @@
 # rest.controller
+
+http://bitrix.local/rest/1/тут ключ/macro.postman.cars.create
+
 Добавление своих методов REST API
 # [Добавление своих методов REST API](https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=99&LESSON_ID=7985&LESSON_PATH=8771.5380.7985)
  При создании собственных приложений для коробочных редакций возникает потребность в добавлении новых методов для них в REST API.
