@@ -1,0 +1,36 @@
+<?php
+namespace Services\Rest;
+use Bitrix\Main\Diag\Debug;
+use \Bitrix\Crm\DealTable;
+use CCrmDeal;
+
+class CarsCreateService
+{
+    public static function create(array $params): array
+    {
+
+        $arFields = array(
+            "TITLE" => $params["title"],
+            "TYPE_ID" => $params["type_id"],
+            "STAGE_ID" => $params["stage_id"],
+            "COMPANY_ID" => $params["company_id"],
+            "OPENED" => $params["opened"],
+            "ASSIGNED_BY_ID" => $params["assigned_by_id"],
+        );
+        $options = array('CURRENT_USER'=>$params["current_user"]); //из под админа
+        $deal = new CCrmDeal(false);
+        $dealId = $deal->Add($arFields,true,$options);
+        Debug::dumpToFile($params, $varName =  date('Y-m-d H:i:s'),);
+        return [];
+    }
+    public static function delete(array $params): array
+    {
+        DealTable::delete($params["id"]);
+        return ['Это на удаление'];
+    }
+    public static function update(array $params): array
+    {
+        DealTable::update($params["id"], ["TITLE" => $params["title"]]);
+        return ['Это на обновление'];
+    }
+}
